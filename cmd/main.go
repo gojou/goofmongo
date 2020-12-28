@@ -6,21 +6,21 @@ import (
 	"log"
 	"os"
 
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"github.com/gojou/goofmongo/pkg/models"
+
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-type person struct {
-	ID primitive.ObjectID `bson:"_id,omitempty" json:"_id,omitempty"`
-
-	Lastname  string `bson:"lastname,omitempty" json:"lastname,omitempty"`
-	Firstname string `bson:"firstname,omitempty" json:"firstname,omitempty"`
-	Age       int    `bson:"age,omitempty" json:"age"`
-}
-
 func main() {
+
+	p := models.Person{
+		ID:        [12]byte{},
+		Lastname:  "Poling",
+		Firstname: "Rhi",
+		Age:       13,
+	}
 
 	client := getClient()
 
@@ -29,16 +29,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	p := person{
-		//	ID:        [12]byte{},
-		Lastname:  "Poling",
-		Firstname: "Mark",
-		Age:       57,
-	}
-
 	insertPerson(*client, p)
 }
-func insertPerson(c mongo.Client, p person) {
+func insertPerson(c mongo.Client, p models.Person) {
 	collection := c.Database("test").Collection("persons")
 	insertResult, err := collection.InsertOne(context.Background(), p)
 	if err != nil {
