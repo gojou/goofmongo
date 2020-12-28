@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/gojou/goofmongo/pkg/connect"
 	"github.com/gojou/goofmongo/pkg/models"
+	"github.com/gojou/goofmongo/pkg/repo"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
@@ -21,7 +21,7 @@ func main() {
 		Age:       13,
 	}
 
-	client := connect.GetClient()
+	client := repo.GetClient()
 
 	err := client.Ping(context.Background(), readpref.Primary())
 	if err != nil {
