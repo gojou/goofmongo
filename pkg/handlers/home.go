@@ -5,7 +5,8 @@ import (
 	"net/http"
 )
 
-// Home is home
-func Home(w http.ResponseWriter, r *http.Request) {
+// HelloWorld is traditional
+func HelloWorld(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Hello world!")
+
 }

@@ -19,9 +19,9 @@ func main() {
 
 	p := models.Person{
 		ID:        [12]byte{},
-		Lastname:  "Poling",
-		Firstname: "Rhi",
-		Age:       13,
+		Lastname:  "Tsung",
+		Firstname: "Fred",
+		Age:       55,
 	}
 
 	client := repo.GetClient()

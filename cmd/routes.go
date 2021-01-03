@@ -7,7 +7,7 @@ import (
 )
 
 func routes(r *mux.Router) {
-	r.HandleFunc("/", handlers.Home)
+	r.HandleFunc("/", handlers.HelloWorld)
 	r.HandleFunc("/person", handlers.Person)
 
 }

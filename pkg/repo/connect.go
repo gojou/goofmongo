@@ -2,6 +2,7 @@ package repo
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 
@@ -11,11 +12,12 @@ import (
 
 //GetClient gets a mongo client
 func GetClient() *mongo.Client {
+	fmt.Println(os.Getenv("MONGOTESTURI"))
 
-	clientOptions := options.Client().ApplyURI(os.Getenv("MONGOTESTURI"))
+	clientOptions := options.Client().ApplyURI("mongodb+srv://mongouser:hpkns372@cluster0.dfch4.mongodb.net/test")
 	client, err := mongo.NewClient(clientOptions)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Bad URI: ", err)
 	}
 	err = client.Connect(context.Background())
 	if err != nil {
