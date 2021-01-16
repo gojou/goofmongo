@@ -1,0 +1,2 @@
+conf:
+  atlas: mongodb+srv://mongouser:hpkns372@cluster0.dfch4.mongodb.net/test
